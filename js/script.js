@@ -89,7 +89,7 @@ async function loadPosts() {
                 <p>${post.body}</p>
                 ${post.media.url ? `<img src="${post.media.url}" alt="${post.media.alt || 'No image'}" />` : ''}
                 <p>Tags: ${post.tags.join(', ')}</p>
-                <a href="/post/edit.html?id=${post.id}" class="edit-button">Edit</a>
+                <a href="./post/edit.html?id=${post.id}" class="edit-button">Edit</a>
                 <button class="delete-button" data-id="${post.id}">Delete</button>
             `;
             postsContainer.appendChild(postElement);  // Append the post to the container
