@@ -8,8 +8,8 @@ body {
 
 /* Header Styles */
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,7 +31,7 @@ nav ul.menu li {
 }
 
 nav ul.menu li a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
 }
 

@@ -1,4 +1,4 @@
-import { fetchPostById, createPost, updatePost, fetchBlogPosts, deletePost } from '../api/posts.js';
+import { fetchPostById, fetchBlogPosts } from '../api/posts.js';
 
 // Toggle Hamburger Menu
 document.addEventListener('DOMContentLoaded', () => {
@@ -46,14 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await updatePost(postId, postData);
                 if (result) {
                     alert('Post updated successfully');
-                    window.location.href = './post/index.html';  // Redirect after update
+                    window.location.href = '/post/index.html';  // Redirect after update
                 }
             } else {
                 // Create new post
                 const result = await createPost(postData);
                 if (result) {
                     alert('Post created successfully');
-                    window.location.href = './post/index.html';  // Redirect after creation
+                    window.location.href = '/post/index.html';  // Redirect after creation
                 }
             }
         });
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Check if the page has a container for displaying posts
-    const postsContainer = document.getElementById('posts-container');
+    const postsContainer = document.getElementById('posts-front');
     if (postsContainer) {  // If the posts container exists, load posts
         loadPosts();
     }
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Function to load and display posts
 async function loadPosts() {
-    const postsContainer = document.getElementById('posts-container');
+    const postsContainer = document.getElementById('posts-front');
 
     // Fetch posts from the API
     const response = await fetchBlogPosts();
@@ -89,8 +89,6 @@ async function loadPosts() {
                 <p>${post.body}</p>
                 ${post.media.url ? `<img src="${post.media.url}" alt="${post.media.alt || 'No image'}" />` : ''}
                 <p>Tags: ${post.tags.join(', ')}</p>
-                <a href="/post/edit.html?id=${post.id}" class="edit-button">Edit</a>
-                <button class="delete-button" data-id="${post.id}">Delete</button>
             `;
             postsContainer.appendChild(postElement);  // Append the post to the container
         });
@@ -100,24 +98,7 @@ async function loadPosts() {
     }
 }
 
-// Event delegation for delete buttons
-document.addEventListener('click', async (event) => {
-    if (event.target.classList.contains('delete-button')) {
-        const postId = event.target.getAttribute('data-id');
-        
-        // Confirm deletion
-        const confirmDelete = confirm('Are you sure you want to delete this post?');
-        if (confirmDelete) {
-            const result = await deletePost(postId);  // Call delete function
-            if (result) {
-                alert('Post deleted successfully');
-                loadPosts();  // Refresh the post list after deletion
-            } else {
-                alert('Failed to delete the post');
-            }
-        }
-    }
-});
+
 
 async function loadPostData(id) {
     console.log(`Loading post data for ID: ${id}`);  // Add this for debugging
