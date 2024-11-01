@@ -1,17 +1,7 @@
+import { initializeHamburgerMenu } from './utils/hamburgerMenu.js';
 import { fetchPostById, createPost, updatePost, fetchBlogPosts, deletePost } from '../api/posts.js';
 
-// Toggle Hamburger Menu
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.querySelector('nav ul.menu');
-
-    if (hamburger && menu) {
-        hamburger.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
-    } else {
-        console.warn('Hamburger menu or navigation menu not found.');
-    }
+initializeHamburgerMenu();
 
     // Check if the page has a post form (for creating/updating posts)
     const postForm = document.getElementById('post-form');
@@ -46,14 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await updatePost(postId, postData);
                 if (result) {
                     alert('Post updated successfully');
-                    window.location.href = './post/index.html';  // Redirect after update
+                    window.location.href = './index.html';  // Redirect after update
                 }
             } else {
                 // Create new post
                 const result = await createPost(postData);
                 if (result) {
                     alert('Post created successfully');
-                    window.location.href = './post/index.html';  // Redirect after creation
+                    window.location.href = './index.html';  // Redirect after creation
                 }
             }
         });
@@ -66,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (postsContainer) {  // If the posts container exists, load posts
         loadPosts();
     }
-});
 
 // Function to load and display posts
 async function loadPosts() {

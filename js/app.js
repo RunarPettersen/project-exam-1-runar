@@ -1,74 +1,63 @@
+import { initializeHamburgerMenu } from './utils/hamburgerMenu.js';
 import { fetchPostById, fetchBlogPosts } from '../api/posts.js';
+import { initializeCarousel } from './utils/carousel.js';
 
-// Toggle Hamburger Menu
+initializeHamburgerMenu();
+
 document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.querySelector('nav ul.menu');
+    initializeCarousel();
+});
 
-    if (hamburger && menu) {
-        hamburger.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
-    } else {
-        console.warn('Hamburger menu or navigation menu not found.');
+// Check if the page has a post form (for creating/updating posts)
+const postForm = document.getElementById('post-form');
+const urlParams = new URLSearchParams(window.location.search);
+const postId = urlParams.get('id');
+if (postForm) {
+    if (postId) {
+        loadPostData(postId);  // Load existing post data for editing
     }
-
-    // Check if the page has a post form (for creating/updating posts)
-    const postForm = document.getElementById('post-form');
-    const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get('id');
-
-    if (postForm) {
-        if (postId) {
-            loadPostData(postId);  // Load existing post data for editing
-        }
-
-        postForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const title = document.getElementById('title').value;
-            const body = document.getElementById('body').value;
-            const tags = document.getElementById('tags').value.split(',').map(tag => tag.trim());
-            const mediaUrl = document.getElementById('media-url').value;
-            const mediaAlt = document.getElementById('media-alt').value;
-
-            const postData = {
-                title,
-                body,
-                tags,
-                media: {
-                    url: mediaUrl,
-                    alt: mediaAlt
-                }
-            };
-
-            if (postId) {
-                // Update existing post
-                const result = await updatePost(postId, postData);
-                if (result) {
-                    alert('Post updated successfully');
-                    window.location.href = '/post/index.html';  // Redirect after update
-                }
-            } else {
-                // Create new post
-                const result = await createPost(postData);
-                if (result) {
-                    alert('Post created successfully');
-                    window.location.href = '/post/index.html';  // Redirect after creation
-                }
+    postForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('title').value;
+        const body = document.getElementById('body').value;
+        const tags = document.getElementById('tags').value.split(',').map(tag => tag.trim());
+        const mediaUrl = document.getElementById('media-url').value;
+        const mediaAlt = document.getElementById('media-alt').value;
+        const postData = {
+            title,
+            body,
+            tags,
+            media: {
+                url: mediaUrl,
+                alt: mediaAlt
             }
-        });
-    } else {
-        console.warn('Post form not found.');
-    }
+        };
+        if (postId) {
+            // Update existing post
+            const result = await updatePost(postId, postData);
+            if (result) {
+                alert('Post updated successfully');
+                window.location.href = '/post/index.html';  // Redirect after update
+            }
+        } else {
+            // Create new post
+            const result = await createPost(postData);
+            if (result) {
+                alert('Post created successfully');
+                window.location.href = '/post/index.html';  // Redirect after creation
+            }
+        }
+    });
+} else {
+    console.warn('Post form not found.');
+}
 
     // Check if the page has a container for displaying posts
     const postsContainer = document.getElementById('posts-front');
     if (postsContainer) {  // If the posts container exists, load posts
         loadPosts();
     }
-});
 
-// Function to load and display posts
 async function loadPosts() {
     const postsContainer = document.getElementById('posts-front');
 
@@ -85,7 +74,7 @@ async function loadPosts() {
             const postElement = document.createElement('div');
             postElement.classList.add('post');
             postElement.innerHTML = `
-                <h2>${post.title}</h2>
+                <a href=data-id="${post.id}"><h2>${post.title}</h2></a>
                 <p>${post.body}</p>
                 ${post.media.url ? `<img src="${post.media.url}" alt="${post.media.alt || 'No image'}" />` : ''}
                 <p>Tags: ${post.tags.join(', ')}</p>
@@ -97,8 +86,6 @@ async function loadPosts() {
         postsContainer.innerHTML = '<p>No posts found.</p>';
     }
 }
-
-
 
 async function loadPostData(id) {
     console.log(`Loading post data for ID: ${id}`);  // Add this for debugging
