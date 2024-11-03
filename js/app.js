@@ -74,8 +74,9 @@ async function loadPosts() {
             const postElement = document.createElement('div');
             postElement.classList.add('post');
             postElement.innerHTML = `
-                <a href=data-id="${post.id}"><h2>${post.title}</h2></a>
-                <p>${post.body}</p>
+                <a href="./view.html?id=${post.id}"><h2>${post.title}</h2></a>
+                <p>${post.body.substring(0, 400)}</p>
+                <a href="./view.html?id=${post.id}">… Read more</a>
                 ${post.media.url ? `<img src="${post.media.url}" alt="${post.media.alt || 'No image'}" />` : ''}
                 <p>Tags: ${post.tags.join(', ')}</p>
             `;

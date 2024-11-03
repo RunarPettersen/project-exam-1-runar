@@ -1,0 +1,97 @@
+#film-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    
+}
+
+#film-page {
+    display: flex;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+body {
+    background-image: linear-gradient(rgba(61, 90, 128, 0.5), rgba(255, 255, 0, 0.5)), url("../images/norwavelogo.png");
+    background-size: 500%;
+}
+
+.film-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+}
+
+.film-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.film-card h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.film-card p {
+    font-size: 0.9em;
+}
+
+.film-card a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+}
+
+#film-details {
+    max-width: 1000px;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+#film-details img {
+    width: 50%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    float: left;
+}
+
+#film-details h2 {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+#film-details p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+#film-details a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+#film-details a:hover {
+    background-color: #217dbb;
+}
+
+

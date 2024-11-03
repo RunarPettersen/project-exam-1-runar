@@ -3,21 +3,26 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #3d5a80;
+    background-image: linear-gradient(rgba(61, 90, 128, 0.5), rgba(255, 255, 0, 0.5)), url("../images/norwavelogo.png");
+    background-size: 500%;
 }
 
 /* Header Styles */
 header {
+    position: relative;
     background-color: #fff;
     color: #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    box-shadow: 0 8px 6px -6px black, 0px -50px 36px -50px #3d5a80 inset;
+    z-index: 99;
 }
 
 .logo img {
-    max-height: 50px;
+    max-height: 70px;
 }
 
 nav ul.menu {
@@ -41,13 +46,8 @@ nav ul.menu li a {
     cursor: pointer;
 }
 
-/* Main Section Styles */
-main {
-    padding: 20px;
-}
-
 #blog-posts {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
@@ -156,6 +156,66 @@ input[type="checkbox"] {
 
 .post .edit-button:hover {
     background-color: #0056b3;
+}
+
+.filmscroller-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.filmscroller {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.filmscroller-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: calc(200%); /* Adjust to ensure space for scrolling */
+}
+
+.filmscroller-item {
+    flex: 0 0 20%; /* Show 5 items at a time */
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.filmscroller-item img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.filmscroller-item h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.filmscroller-item p {
+    font-size: 0.9em;
+}
+
+.filmscroller-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 2;
+}
+
+#filmscroller-prev {
+    left: 10px;
+}
+
+#filmscroller-next {
+    right: 10px;
 }
 
 /* Responsive Styling */
