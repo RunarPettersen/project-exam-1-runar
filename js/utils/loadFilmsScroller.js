@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 filmItem.classList.add('filmscroller-item');
                 filmItem.innerHTML = `
                     <a href="./films/view.html?id=${film.id}">
-                    <img src="./${film.image}" alt="${film.title}">
+                    <img src="${film.image}" alt="${film.title}">
                     <h3>${film.title}${film.englishtitle ? ` (${film.englishtitle})` : ''}</h3></a>
                     <p><strong>Year:</strong> ${film.year}</p>
                 `;

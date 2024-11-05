@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 filmCard.classList.add('film-card');
                 filmCard.innerHTML = `
                     <a href="./view.html?id=${film.id}">
-                        <img src="${film.image}" alt="${film.title}">
+                        <img src="../${film.image}" alt="${film.title}">
                         <h2>${film.title}${film.englishtitle ? ` (${film.englishtitle})` : ''}</h2>
                         <p><strong>Year:</strong> ${film.year}</p>
-                        <p><strong>Director:</strong> ${film.Director}</p>
+                        <p><strong>Director:</strong> ${film.director}</p>
                         <p>${film.description}</p>
                         <p><strong>Format:</strong> ${film.format}</p>
                     </a>
