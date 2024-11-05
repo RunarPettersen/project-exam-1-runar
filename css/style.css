@@ -46,6 +46,12 @@ nav ul.menu li a {
     cursor: pointer;
 }
 
+#posts-front {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
 #blog-posts {
     max-width: 1000px;
     margin: 0 auto;
