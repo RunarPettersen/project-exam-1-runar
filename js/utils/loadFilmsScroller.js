@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 filmItem.classList.add('filmscroller-item');
                 filmItem.innerHTML = `
                     <a href="./films/view.html?id=${film.id}">
-                    <img src="${film.image}" alt="${film.title}">
+                    <img src="./${film.image}" alt="${film.title}">
                     <h3>${film.title}${film.englishtitle ? ` (${film.englishtitle})` : ''}</h3></a>
                     <p><strong>Year:</strong> ${film.year}</p>
                 `;
@@ -29,7 +29,7 @@ function initializeFilmScroller() {
     const filmscrollerInner = document.getElementById('filmscroller-inner');
     const filmItems = document.querySelectorAll('.filmscroller-item');
     const itemWidth = filmItems[0].offsetWidth;
-    const maxPosition = (filmItems.length - 5) * itemWidth; // 5 items visible at a time
+    const maxPosition = (filmItems.length - 5) * itemWidth;
 
     document.getElementById('filmscroller-next').addEventListener('click', () => {
         if (currentPosition < maxPosition) {

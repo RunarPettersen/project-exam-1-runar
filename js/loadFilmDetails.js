@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p><strong>Year:</strong> ${film.year}</p>
                     <p><strong>Director:</strong> ${film.Director}</p>
                     <p>${film.description}</p>
+                    <p><strong>Genre:</strong> ${film.genre}</p>
                     <p><strong>Format:</strong> ${film.format}</p>
                     <a href="${film.IMDB}" target="_blank">View on IMDB</a>
                 `;
