@@ -4,16 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Post</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Adjust path as needed -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
     <header>
-        <h1>Post Details</h1>
-        <a href="/post/index.html">Back to Blog</a> <!-- Link to go back to the main blog page -->
+        <div class="logo">
+            <a href="./"><img src="images/norwavelogo.png" alt="Logo"></a>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="./">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="./films/">Films</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" id="hamburger">
+                &#9776;
+            </div>
+        </nav>
     </header>
+
     <main id="post-details">
         <!-- The post content will be loaded here -->
     </main>
-    <script type="module" src="js/viewPost.js"></script> <!-- Adjust path as needed -->
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 NorWave. All rights reserved.</p>
+            <p>Designed with care by Runar.</p>
+        </div>
+    </footer>
+    
+    <script type="module" src="js/viewPost.js"></script>
 </body>
 </html>

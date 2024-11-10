@@ -14,7 +14,7 @@
         </div>
         <nav>
             <ul class="menu">
-                <li><a href="#">Home</a></li>
+                <li><a href="../">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="./">Films</a></li>
                 <li><a href="#">Contact</a></li>
@@ -27,6 +27,15 @@
     </header>
 
     <main id="film-page">
+        <div class="sorting">
+            <label for="sortOptions">Sort by:</label>
+            <select id="sortOptions">
+                <option value="dateAdded">Date Added</option>
+                <option value="year">Year (Newest First)</option>
+                <option value="yearOldest">Year (Oldest First)</option>
+                <option value="alphabetical">Alphabetical</option>
+            </select>
+        </div>
         <div id="film-grid"></div>        
     </main>
 

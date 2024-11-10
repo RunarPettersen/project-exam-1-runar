@@ -46,13 +46,17 @@ nav ul.menu li a {
     cursor: pointer;
 }
 
-#posts-front {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    /* width: 100%; */
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-#blog-posts {
+article {
     max-width: 1000px;
     margin: 0 auto;
     background-color: #fff;
@@ -60,26 +64,88 @@ nav ul.menu li a {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-#blog-posts .post {
-    border-bottom: 1px solid #ddd;
-    padding: 15px 0;
+article img {
+    max-width: 100%;
 }
 
-#blog-posts .post:last-child {
-    border-bottom: none;
+.author-date {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 15px;
 }
 
-#blog-posts .post h2 {
-    margin: 0;
-}
-
-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 400px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
+    z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 3px solid;
+    border-color: #de3500 transparent #fff transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotate 1s linear infinite;
+    position: fixed;
+}
+
+.loader:before, .loader:after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    border: 10px solid transparent;
+    border-bottom-color:#fff;
+    transform: translate(-10px, 19px) rotate(-35deg);
+}
+
+ .loader:after {
+    border-color: #de3500 #0000 #0000 #0000 ;
+    transform: translate(32px, 3px) rotate(-35deg);
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#share-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#share-button i {
+    font-size: 1.2em;
+}
+
+#share-button:hover {
+    background-color: #217dbb;
+    transform: translateY(-2px);
+}
+
+#share-button:active {
+    background-color: #1a5e8c;
+    transform: translateY(0);
 }
 
 /* Form Input Styles */
@@ -94,7 +160,7 @@ input[type="email"],
 input[type="password"],
 input[type="url"],
 textarea {
-    width: 100%;
+    width: 98%;
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 15px;
@@ -104,7 +170,7 @@ textarea {
 }
 
 textarea {
-    height: 80px;
+    height: 240px;
     resize: none;
 }
 
@@ -123,10 +189,14 @@ input[type="checkbox"] {
 }
 
 .post {
+    display: flex;
+    flex-direction: column;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fafafa;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .post h2 {
@@ -138,30 +208,48 @@ input[type="checkbox"] {
 .post p {
     font-size: 1rem;
     color: #555;
-    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.post a {
+    text-decoration: none;
 }
 
 .post img {
-    max-width: 100%;
-    border-radius: 4px;
-    margin-top: 10px;
+    width: 100%; /* Make the image fit the container */
+    height: 200px; /* Set a fixed height for uniformity */
+    object-fit: cover; /* Ensure the image is cropped to fit */
+    border-radius: 5px;
+    margin-top: auto; /* Pushes the image to the bottom */
+    padding-top: 20px;
 }
 
-/* Edit button styling */
-.post .edit-button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 12px;
-    color: #fff;
-    background-color: #007bff;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
+#posts-front {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    row-gap: 60px;
 }
 
-.post .edit-button:hover {
-    background-color: #0056b3;
+#blog-posts {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    padding-bottom: 40px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#blog-posts .post {
+    border-bottom: 1px solid #ddd;
+}
+
+#blog-posts .post:last-child {
+    border-bottom: none;
+}
+
+#blog-posts .post h2 {
+    margin: 0;
 }
 
 .filmscroller-container {
@@ -224,15 +312,60 @@ input[type="checkbox"] {
     right: 10px;
 }
 
-/* Responsive Styling */
-@media (max-width: 600px) {
-    form {
-        padding: 15px;
-        width: 100%;
-    }
+#related-posts {
+    margin-top: 40px;
 }
 
-/* Responsive Design */
+#related-posts h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.related-posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+}
+
+.related-post {
+    flex: 1 1 30%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.related-post h4 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.related-post img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    height: 140px; 
+}
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
 @media (max-width: 768px) {
     nav ul.menu {
         display: none;
@@ -255,5 +388,12 @@ input[type="checkbox"] {
     nav ul.menu.active li {
         padding: 10px;
         border-bottom: 1px solid #444;
+    }
+}
+
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+        width: 100%;
     }
 }

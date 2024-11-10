@@ -1,20 +1,19 @@
 import { fetchBlogPosts } from '../../api/posts.js';
+import { truncateText } from '../helpers/textWords.js';
 
 export async function initializeCarousel() {
     const carouselContainer = document.querySelector('.carousel-inner');
     const posts = await fetchBlogPosts();
 
     if (posts && posts.length > 0) {
-        // Limit to the 3 latest posts
         const latestPosts = posts.slice(0, 3);
         latestPosts.forEach((post) => {
             const postItem = document.createElement('div');
             postItem.classList.add('carousel-item');
             postItem.innerHTML = `
                 <h2>${post.title}</h2>
-                <p>${post.body.substring(0, 100)}...</p>
+                <p>${truncateText(post.body, 20)} <a href="./view.html?id=${post.id}">Read more</a></p>
                 ${post.media.url ? `<img src="${post.media.url}" alt="${post.media.alt || 'Post image'}" />` : ''}
-                <br><a href="./view.html?id=${post.id}">Read more</a>
             `;
             carouselContainer.appendChild(postItem);
         });
@@ -52,7 +51,7 @@ export async function initializeCarousel() {
 }
 
 function setupCarouselNavigation(currentIndex, totalItems, updateCarousel, restartAutoSlide) {
-    if (totalItems <= 1) return; // No need for a carousel if there is only one item
+    if (totalItems <= 1) return;
 
     document.getElementById('carousel-next').addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % totalItems;

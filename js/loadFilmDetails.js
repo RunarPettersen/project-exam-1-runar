@@ -1,3 +1,7 @@
+import { initializeHamburgerMenu } from './utils/hamburgerMenu.js';
+
+initializeHamburgerMenu();
+
 document.addEventListener('DOMContentLoaded', () => {
     const filmId = new URLSearchParams(window.location.search).get('id');
 
@@ -14,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (film) {
                 document.getElementById('film-details').innerHTML = `
                     <img src="../${film.image}" alt="${film.title}">
-                    <h2>${film.title}${film.englishtitle ? ` (${film.englishtitle})` : ''}</h2>
+                    <h2>${film.title}</h2>
+                    <p><strong>English title:</strong> ${film.englishtitle ? ` ${film.englishtitle}` : ''}</p>
                     <p><strong>Year:</strong> ${film.year}</p>
                     <p><strong>Director:</strong> ${film.director}</p>
                     <p>${film.description}</p>

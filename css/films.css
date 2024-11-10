@@ -12,6 +12,8 @@
     justify-content: center;
     max-width: 1000px;
     margin: 0 auto;
+    flex-direction: column;
+    background-color: #fff;
 }
 
 body {
@@ -67,6 +69,7 @@ body {
     border-radius: 5px;
     margin-bottom: 20px;
     float: left;
+    padding: 10px;
 }
 
 #film-details h2 {
@@ -94,4 +97,30 @@ body {
     background-color: #217dbb;
 }
 
+.sorting {
+    display: flex;
+    align-items: baseline;
+    margin: 20px;
+}
 
+.sorting label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.sorting select {
+    padding: 5px 10px;
+    font-size: 1em;
+}
+
+@media (max-width: 600px) {
+    #film-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #film-details img {
+        width: 90%;
+        align-self: center;
+    }
+}

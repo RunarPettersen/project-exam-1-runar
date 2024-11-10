@@ -1,9 +1,7 @@
-// Set your API endpoints
 const apiKey = '3caf52e3-39b2-4bb2-9358-1c9a715d1322';  // Replace with your actual API key
 const loginApiUrl = 'https://v2.api.noroff.dev/auth/login';  // Login endpoint
 const registerApiUrl = 'https://v2.api.noroff.dev/auth/register';  // Registration endpoint
 
-// Login Function with correct token extraction
 async function loginUser(email, password) {
     try {
         const response = await fetch(loginApiUrl, {
@@ -18,12 +16,18 @@ async function loginUser(email, password) {
             const data = await response.json();
             console.log('Login successful:', data);  // Log the full response
 
-            // Extract and store the accessToken from data.accessToken
+            // Extract and store the accessToken and user's name from the response
             if (data.data && data.data.accessToken) {
                 const token = data.data.accessToken;
                 localStorage.setItem('authToken', token);  // Store the token in localStorage
-                console.log('Token stored successfully:', token);
-                window.location.href = '../post/index.html';  // Redirect to admin blog page
+
+                // Store the user's name if available in the response
+                if (data.data.name) {
+                    localStorage.setItem('userName', data.data.name);
+                    console.log('User name stored successfully:', data.data.name);
+                }
+
+                window.location.href = '../admin/index.html';  // Redirect to admin blog page
             } else {
                 console.error('No accessToken found in the login response');
                 alert('Login failed: No token returned.');

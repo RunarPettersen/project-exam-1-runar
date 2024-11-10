@@ -4,19 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Account</title>
-    <link rel="stylesheet" href="../styles.css"> <!-- Add your styles here -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
     <header>
+        <div class="logo">
+            <a href="../"><img src="../images/norwavelogo.png" alt="Logo"></a>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" id="hamburger">
+                &#9776;
+            </div>
+        </nav>
         <h1>User Account</h1>
         <button id="logout-btn">Logout</button>
     </header>
+
+    <menu>
+        <a href="../admin/">All posts</a>
+        <a href="create.html">Add post</a>
+        <a href="../account/login.html">Login</a>
+        <a href="../account/register.html">Register</a>
+    </menu>
 
     <section id="user-info">
         <h2>Welcome, <span id="user-name"></span></h2>
         <p>Email: <span id="user-email"></span></p>
         <p>Bio: <span id="user-bio"></span></p>
-        <img id="user-avatar" src="" alt="User Avatar" style="width:100px; height:100px;">
+        <button id="logout-btn">Logout</button>
     </section>
 
     <script type="module" src="../js/user.js"></script>

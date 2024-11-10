@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NorWave - Home</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/films.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../"><img src="../images/norwavelogo.png" alt="Logo"></a>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="../">Home</a></li>
+                <li><a href="./">News</a></li>
+                <li><a href="../films/">Films</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                &#9776;
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        
+        <section id="blog-posts">
+            <div class="sorting">
+                <label for="sortOptions">Sort by:</label>
+                <select id="sortOptions">
+                    <option value="dateAdded">Date Added (Newest)</option>
+                    <option value="dateAddedOldest">Date Added (Oldest)</option>
+                    <option value="alphabetical">Alphabetical</option>
+                </select>
+            </div>
+            <h1>NEWS:</h1>
+            <div id="posts-front"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 NorWave. All rights reserved.</p>
+            <p>Designed with care by Runar.</p>
+        </div>
+    </footer>
+    
+
+    <span class="loader"></span>
+
+    <script type="module" src="../js/news.js"></script>
+</body>
+</html>

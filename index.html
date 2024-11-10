@@ -10,16 +10,15 @@
 <body>
     <header>
         <div class="logo">
-            <img src="images/norwavelogo.png" alt="Logo">
+            <a href="./"><img src="images/norwavelogo.png" alt="Logo"></a>
         </div>
         <nav>
             <ul class="menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="./">Home</a></li>
+                <li><a href="./news">News</a></li>
                 <li><a href="./films/">Films</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
-            <!-- Hamburger Menu for Mobile -->
             <div class="hamburger" id="hamburger">
                 &#9776;
             </div>
@@ -37,13 +36,13 @@
             <button id="carousel-next" class="carousel-button">❯</button>
         </div>
         <section id="blog-posts">
-            <h1>Blog Posts</h1>
+            <h1>NEWS:</h1>
             <div id="posts-front"></div>
         </section>
     </main>
 
     <section class="filmscroller-container">
-        <h2>Latest Films</h2>
+        <h2>LATEST FILMS IN DATABASE:</h2>
         <button id="filmscroller-prev" class="filmscroller-button">❮</button>
         <div class="filmscroller">
             <div class="filmscroller-inner" id="filmscroller-inner">
@@ -52,6 +51,16 @@
         </div>
         <button id="filmscroller-next" class="filmscroller-button">❯</button>
     </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 NorWave. All rights reserved.</p>
+            <p>Designed with care by Runar.</p>
+        </div>
+    </footer>
+    
+
+    <span class="loader"></span>
 
     <script type="module" src="js/app.js"></script>
     <script type="module" src="js/utils/loadFilmsScroller.js"></script>
