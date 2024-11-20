@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    max-width: 1000px;
+    max-width: 960px;
     margin: auto;
     flex-direction: column;
     background-color: #fff;
@@ -23,6 +23,10 @@
 .carousel-item {
     flex: 0 0 100%; /* Each item takes full width */
     text-align: center;
+}
+
+.carousel-item a {
+    color: var(--link-color);
 }
 
 .carousel-item img {

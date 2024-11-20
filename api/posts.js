@@ -1,9 +1,8 @@
 import { authFetch } from './authFetch.js';
 
-const BASE_URL = 'https://v2.api.noroff.dev';  // Base URL for your API
-const username = 'Runar';  // Use your actual username here
+const BASE_URL = 'https://v2.api.noroff.dev';
+const username = 'Runar';
 
-// Function to create a new post
 export async function createPost(postData) {
     const createPostUrl = `${BASE_URL}/blog/posts/${username}`;
 
@@ -34,7 +33,6 @@ export async function createPost(postData) {
     }
 }
 
-// Fetch all posts for the specific user
 export async function fetchBlogPosts() {
     const apiUrl = `${BASE_URL}/blog/posts/${username}`;
 

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const result = await deletePost(postId);
                     if (result) {
                         alert('Post deleted successfully');
-                        await loadPosts(); // Refresh post list after deletion
+                        await loadPosts();
                     } else {
                         alert('Failed to delete the post');
                     }
@@ -42,16 +42,14 @@ async function loadPosts() {
     try {
         const response = await fetchBlogPosts();
 
-        postsContainer.innerHTML = ''; // Clear existing content
+        postsContainer.innerHTML = '';
         if (response && response.length > 0) {
             response.forEach(post => {
                 const postElement = document.createElement('div');
                 postElement.classList.add('post');
                 postElement.innerHTML = `
-                    <h2>${post.title}</h2>
-                    <p>${post.body.substring(0, 200)}</p>
+                    <a href="../view.html?id=${post.id}"><h2>${post.title}</h2></a>
                     ${post.media.url ? `<img src="${post.media.url}" alt="${post.media.alt || 'No image'}" />` : ''}
-                    <p>Tags: ${post.tags.join(', ')}</p>
                     <a href="./edit.html?id=${post.id}" class="edit-button">Edit</a>
                     <button class="delete-button" data-id="${post.id}">Delete</button>
                 `;

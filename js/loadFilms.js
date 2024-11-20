@@ -8,16 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const filmGrid = document.getElementById('film-grid');
     const sortOptions = document.getElementById('sortOptions');
 
-    // Show the loading spinner before fetching data
     showLoadingSpinner();
 
     fetch('../json/films.json')
         .then(response => response.json())
         .then(films => {
             displayFilms(films);
-            hideLoadingSpinner(); // Hide the spinner once films are displayed
+            hideLoadingSpinner();
 
-            // Listen for sorting option changes
             sortOptions.addEventListener('change', () => {
                 const sortedFilms = sortFilms(films, sortOptions.value);
                 displayFilms(sortedFilms);
@@ -26,14 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error loading films:', error);
             filmGrid.innerHTML = '<p>Error loading films.</p>';
-            hideLoadingSpinner(); // Hide the spinner if there's an error
+            hideLoadingSpinner();
         });
 });
 
-// Function to display films in the grid
 function displayFilms(films) {
     const filmGrid = document.getElementById('film-grid');
-    filmGrid.innerHTML = ''; // Clear current content
+    filmGrid.innerHTML = '';
 
     films.forEach(film => {
         const filmCard = document.createElement('div');

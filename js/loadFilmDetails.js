@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2>${film.title}</h2>
                     <p><strong>English title:</strong> ${film.englishtitle ? ` ${film.englishtitle}` : ''}</p>
                     <p><strong>Year:</strong> ${film.year}</p>
-                    <p><strong>Director:</strong> ${film.director}</p>
+                    <p><strong>Director:</strong> ${film.director.join(', ')}</p>
+                    ${film.stars && film.stars.length > 2 ? `<p><strong>Stars:</strong> ${film.stars.join(', ')}</p>` : ''}
                     <p>${film.description}</p>
                     <p><strong>Genre:</strong> ${film.genre}</p>
                     <p><strong>Format:</strong> ${film.format}</p>

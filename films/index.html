@@ -6,6 +6,7 @@
     <title>Films</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/films.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -15,13 +16,28 @@
         <nav>
             <ul class="menu">
                 <li><a href="../">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="../news/">News</a></li>
                 <li><a href="./">Films</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="../about/">About</a></li>
             </ul>
-            <!-- Hamburger Menu for Mobile -->
-            <div class="hamburger" id="hamburger">
-                &#9776;
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button id="searchButton" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <label class="hamburger-menu" id="menuToggle">
+                <input type="checkbox">
+                <span class="visually-hidden">Hamburger Menu</span>
+            </label>
+            <div class="mobile-menu" id="mobileMenu">
+                <button class="close-menu" id="closeMenu">X</button>
+                <ul class="mobile-nav-links">
+                    <li><a href="../">Home</a></li>
+                    <li><a href="../news/">News</a></li>
+                    <li><a href="./">Films</a></li>
+                    <li><a href="../about/">About</a></li>
+                </ul>
             </div>
         </nav>
     </header>
@@ -40,5 +56,7 @@
     </main>
 
     <script type="module" src="../js/loadFilms.js"></script>
+    <script type="module" src="../js/utils/search.js"></script>
+    <script src="../js/utils/highlightMenu.js" defer></script>
 </body>
 </html>

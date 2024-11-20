@@ -44,9 +44,9 @@ function displayPosts(posts) {
         const postElement = document.createElement('div');
         postElement.classList.add('post');
         postElement.innerHTML = `
-            <a href="./view.html?id=${post.id}"><h2>${post.title}</h2></a>
+            <a href="../view.html?id=${post.id}"><h2>${post.title}</h2></a>
             <p>${truncateText(post.body, 250)}</p>
-            <a href="./view.html?id=${post.id}">… Read more
+            <a href="../view.html?id=${post.id}">… Read more
                 ${post.media.url ? `<img src="${post.media.url}" alt="${post.media.alt || 'No image'}" />` : ''}
             </a>
         `;
@@ -60,7 +60,7 @@ function initializeSorting(posts) {
     if (sortOptions) {
         sortOptions.addEventListener('change', () => {
             const sortedPosts = sortNews(posts, sortOptions.value);
-            displayPosts(sortedPosts); // Use displayPosts to show sorted posts
+            displayPosts(sortedPosts);
         });
     }
 }

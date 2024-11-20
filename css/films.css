@@ -1,3 +1,5 @@
+@import url('variables.css');
+
 #film-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -16,11 +18,6 @@
     background-color: #fff;
 }
 
-body {
-    background-image: linear-gradient(rgba(61, 90, 128, 0.5), rgba(255, 255, 0, 0.5)), url("../images/norwavelogo.png");
-    background-size: 500%;
-}
-
 .film-card {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -37,6 +34,13 @@ body {
     border-radius: 5px;
 }
 
+.film-card img:hover {
+    -webkit-transform: rotateZ(-10deg);
+    -ms-transform: rotateZ(-10deg);
+    transform: rotateZ(-10deg);
+    transition: 1s ease;
+}
+
 .film-card h2 {
     font-size: 1.5em;
     margin: 10px 0;
@@ -50,7 +54,7 @@ body {
     display: block;
     margin-top: 10px;
     text-decoration: none;
-    color: #3498db;
+    color: var(--font-color);
     font-weight: bold;
 }
 
@@ -86,7 +90,7 @@ body {
     display: inline-block;
     margin-top: 15px;
     padding: 10px 15px;
-    background-color: #3498db;
+    background-color: var(--main-color);
     color: #fff;
     border-radius: 5px;
     text-decoration: none;
@@ -94,7 +98,7 @@ body {
 }
 
 #film-details a:hover {
-    background-color: #217dbb;
+    background-color: var(--second-color);
 }
 
 .sorting {

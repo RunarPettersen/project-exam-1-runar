@@ -1,11 +1,185 @@
+@import url('variables.css');
+
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     margin: 0;
     padding: 0;
     background-color: #3d5a80;
-    background-image: linear-gradient(rgba(61, 90, 128, 0.5), rgba(255, 255, 0, 0.5)), url("../images/norwavelogo.png");
-    background-size: 500%;
+    background-image: linear-gradient(rgba(61, 90, 128, 0.5), rgba(255, 255, 0, 0.5)), url("../images/waves.png");
+    background-size: 200%;
+}
+
+/* Hamburger */
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+    content: "";
+    width: var(--bar-width);
+    height: var(--bar-height);
+    background-color: var(--main-color);
+    border-radius: 99px;
+    transform-origin: left center;
+    transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing), background-color var(--animation-timing);
+}
+
+.hamburger-menu {
+    --x-width: calc(var(--hamburger-height) * 1.41421356237);
+    display: flex;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    z-index: 99;
+    position: relative;
+    align-items: flex-end;
+    margin-right: 35px;
+	filter: drop-shadow(1px 1px 0.1px #000);
+}
+
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked)::before {
+    rotate: 45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburger-menu:has(input:checked)::after {
+    rotate: -45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / 2);
+}
+
+.hamburger-menu input:checked {
+    opacity: 0;
+    width: 0;
+}
+
+.sidebar {
+    transition: translate var(--animation-timing);
+    translate: -100%;
+    margin-top: 3rem;
+    width: 100%;
+    height: 300vh;
+    background-color: black;
+    color: var(--primary-color);
+    position: absolute;
+    z-index: 9999;
+    text-align: center;
+    font-size: 46px;
+    font-family: "Pirata One", system-ui;
+	padding-block: 25px;
+	text-shadow: 0.5px 0.5px 0.5px #fff;
+}
+
+.sidebar div a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.hamburger-menu:has(input:checked) + .sidebar {
+    translate: 0;
+}
+
+.visually-hidden { 
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+	color: #fff;
+}
+
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 34px;
+    cursor: pointer;
+    margin-right: 20px;
+    color: var(--main-color);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 120px;
+    right: -100%; /* Start off-screen */
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.close-menu {
+    background: none;
+    border: none;
+    font-size: 34px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--main-color);
+}
+
+nav ul.menu a.active,
+.mobile-nav-links a.active {
+    font-weight: bold;
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+/* Mobile Nav Links */
+.mobile-nav-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 60px; /* Add space for close button */
+}
+
+.mobile-nav-links li {
+    margin: 10px 0;
+}
+
+.mobile-nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+/* Show the toggle button on mobile and hide desktop search and nav */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links, .search-form {
+        display: none; /* Hide desktop menu and search */
+    }
 }
 
 /* Header Styles */
@@ -23,6 +197,12 @@ header {
 
 .logo img {
     max-height: 70px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
 }
 
 nav ul.menu {
@@ -46,12 +226,78 @@ nav ul.menu li a {
     cursor: pointer;
 }
 
+/* Search Bar Styling */
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid #000;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.search-container input[type="text"] {
+    border: none;
+    outline: none;
+    background: none;
+    color: #000;
+    width: 150px;
+    font-size: 1rem;
+    line-height: normal;
+}
+
+.search-container button, .search-container-menu button {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.search-container i {
+    margin-left: 5px;
+}
+
+#search-results {
+    display: flex;
+    justify-content: center;
+}
+
+.search-results-container {
+    max-width: 960px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+    min-height: 73vh;
+}
+
+#results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+@media (max-width: 1000px) {
+    .search-container {
+        margin: -40px;
+    }
+
+    .search-container input[type="text"] {
+        width: 80px;
+    }
+
+    nav ul.menu li {
+        margin: 0 8px;
+    }
+}
+
 form {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    /* width: 100%; */
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -66,12 +312,6 @@ article {
 
 article img {
     max-width: 100%;
-}
-
-.author-date {
-    font-size: 0.9em;
-    color: #555;
-    margin-bottom: 15px;
 }
 
 .spinner-overlay {
@@ -119,68 +359,6 @@ article img {
     }
 }
 
-#share-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-    padding: 10px 15px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-#share-button i {
-    font-size: 1.2em;
-}
-
-#share-button:hover {
-    background-color: #217dbb;
-    transform: translateY(-2px);
-}
-
-#share-button:active {
-    background-color: #1a5e8c;
-    transform: translateY(0);
-}
-
-/* Form Input Styles */
-label {
-    font-weight: bold;
-    margin-top: 10px;
-    display: block;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="url"],
-textarea {
-    width: 98%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-}
-
-textarea {
-    height: 240px;
-    resize: none;
-}
-
-/* Checkbox Styling */
-input[type="checkbox"] {
-    margin-top: 10px;
-}
-
-
-
 /* Post Container */
 .posts-container {
     display: flex;
@@ -213,6 +391,7 @@ input[type="checkbox"] {
 
 .post a {
     text-decoration: none;
+    color: var(--link-color);
 }
 
 .post img {
@@ -232,7 +411,7 @@ input[type="checkbox"] {
 }
 
 #blog-posts {
-    max-width: 1000px;
+    max-width: 960px;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
@@ -287,6 +466,11 @@ input[type="checkbox"] {
 .filmscroller-item h3 {
     font-size: 1.2em;
     margin: 10px 0;
+    color: var(--font-color);
+}
+
+.filmscroller-item a {
+    text-decoration: none;
 }
 
 .filmscroller-item p {
@@ -352,6 +536,16 @@ input[type="checkbox"] {
     border-radius: 5px;
 }
 
+.about-container {
+    display: flex;
+    justify-content: center;
+}
+
+.about {
+    max-width: 960px;
+    background-color: var(--background-color);
+    padding: 20px;
+}
 
 footer {
     background-color: #000;
@@ -389,11 +583,22 @@ footer {
         padding: 10px;
         border-bottom: 1px solid #444;
     }
+
+    .search-container {
+        display: none;
+    }
 }
 
 @media (max-width: 600px) {
     form {
         padding: 15px;
         width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+    .hamburger-menu {
+        display: none;
     }
 }
