@@ -1,24 +1,30 @@
 import { initializeHamburgerMenu } from './utils/hamburgerMenu.js';
 import { sortFilms } from './utils/sortFilms.js';
 import { showLoadingSpinner, hideLoadingSpinner } from './utils/loadingSpinner.js';
+import { initializePagination } from './utils/pagination.js';
 
 initializeHamburgerMenu();
 
 document.addEventListener('DOMContentLoaded', () => {
     const filmGrid = document.getElementById('film-grid');
     const sortOptions = document.getElementById('sortOptions');
+    const paginationControls = document.getElementById('pagination-controls');
+    const filmsPerPage = 12; // Number of films per page
 
     showLoadingSpinner();
 
     fetch('../json/films.json')
         .then(response => response.json())
         .then(films => {
-            displayFilms(films);
             hideLoadingSpinner();
 
+            // Initialize pagination
+            initializePagination(films, filmGrid, filmsPerPage, displayFilms);
+
+            // Sorting functionality
             sortOptions.addEventListener('change', () => {
                 const sortedFilms = sortFilms(films, sortOptions.value);
-                displayFilms(sortedFilms);
+                initializePagination(sortedFilms, filmGrid, filmsPerPage, displayFilms);
             });
         })
         .catch(error => {

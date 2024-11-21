@@ -117,6 +117,67 @@
     font-size: 1em;
 }
 
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 10px;
+}
+
+.pagination-button, .pagination-arrow {
+    background-color: var(--main-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s;
+    width: 50px;
+    height: 50px;
+}
+
+.pagination-button.active,
+.pagination-arrow:hover {
+    background-color: var(--second-color);
+    font-weight: bold;
+}
+
+.pagination-button:hover {
+    background-color: var(--second-color);
+}
+
+.pagination-arrow i {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.pagination-arrow {
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.pagination-arrow.prev {
+    margin-right: 20px;
+}
+
+.pagination-arrow.next {
+    margin-left: 20px;
+}
+
+.pagination-arrow:hover {
+    color: #007BFF;
+}
+
 @media (max-width: 600px) {
     #film-details {
         display: flex;

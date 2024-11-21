@@ -2,9 +2,17 @@ import { initializeHamburgerMenu } from '../utils/hamburgerMenu.js';
 import { fetchBlogPosts, deletePost } from '../../api/posts.js';
 import { showLoadingSpinner, hideLoadingSpinner } from '../utils/loadingSpinner.js';
 
-initializeHamburgerMenu();
+// Check if the user is logged in
+function checkAuth() {
+    const token = localStorage.getItem('authToken'); // Retrieve the token from localStorage
+    if (!token) {
+        // Redirect to login page if no token is found
+        window.location.href = '../account/login.html';
+    }
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize the page
+function initializeAdminPage() {
     const postsContainer = document.getElementById('posts-container');
 
     if (postsContainer) {
@@ -34,8 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-});
+}
 
+// Fetch and display posts
 async function loadPosts() {
     const postsContainer = document.getElementById('posts-container');
 
@@ -63,3 +72,10 @@ async function loadPosts() {
         postsContainer.innerHTML = '<p>Error loading posts.</p>';
     }
 }
+
+// Main execution
+document.addEventListener('DOMContentLoaded', () => {
+    checkAuth(); // Check if the user is authenticated
+    initializeHamburgerMenu();
+    initializeAdminPage(); // Initialize the admin page functionality
+});

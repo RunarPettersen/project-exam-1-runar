@@ -2,43 +2,41 @@ import { initializeHamburgerMenu } from './utils/hamburgerMenu.js';
 import { fetchBlogPosts } from '../api/posts.js';
 import { showLoadingSpinner, hideLoadingSpinner } from './utils/loadingSpinner.js';
 import { truncateText } from './helpers/textHelpers.js';
-import { sortNews } from './utils/sortNews.js'; 
+import { sortNews } from './utils/sortNews.js';
+import { initializePagination } from './utils/pagination.js';
 
 initializeHamburgerMenu();
 showLoadingSpinner();
 
+const postsPerPage = 12; // Number of posts per page
+
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const postsContainer = document.getElementById('posts-front');
-        
-        if (postsContainer) {
-            const posts = await loadPosts(); // Load and display initial posts
-            initializeSorting(posts); // Initialize sorting functionality
+        const paginationControls = document.getElementById('pagination-controls');
+
+        if (postsContainer && paginationControls) {
+            const posts = await fetchBlogPosts();
+            console.log('Full API response:', posts);
+
+            // Initialize pagination
+            initializePagination(posts, postsContainer, postsPerPage, displayPosts);
+
+            // Initialize sorting functionality
+            initializeSorting(posts);
         }
     } catch (error) {
         console.error('An error occurred:', error);
     } finally {
-        hideLoadingSpinner(); // Ensure the spinner is hidden once loading completes
+        hideLoadingSpinner();
     }
 });
 
-async function loadPosts() {
-    const response = await fetchBlogPosts();
-    console.log('Full API response:', response); // Log for debugging
-
-    if (response && response.length > 0) {
-        displayPosts(response); // Display the posts using displayPosts
-        return response; // Return posts for sorting
-    } else {
-        console.error('No posts found in the response.');
-        document.getElementById('posts-front').innerHTML = '<p>No posts found.</p>';
-    }
-}
-
-// Consolidated function for displaying posts
 function displayPosts(posts) {
     const postsContainer = document.getElementById('posts-front');
-    postsContainer.innerHTML = ''; // Clear any existing content
+    
+    // Clear existing content before adding new posts
+    postsContainer.innerHTML = '';
 
     posts.forEach(post => {
         const postElement = document.createElement('div');
@@ -60,7 +58,9 @@ function initializeSorting(posts) {
     if (sortOptions) {
         sortOptions.addEventListener('change', () => {
             const sortedPosts = sortNews(posts, sortOptions.value);
-            displayPosts(sortedPosts);
+            
+            // Reinitialize pagination with sorted posts
+            initializePagination(sortedPosts, document.getElementById('posts-front'), postsPerPage, displayPosts);
         });
     }
 }

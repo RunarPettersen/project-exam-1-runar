@@ -388,5 +388,35 @@
         "image": "./images/films/gategutter.jpg",
         "IMDB": "https://www.imdb.com/title/tt0041403/",
         "date": "2024-11-18"
+    },
+    {
+        "id": 27,
+        "title": "At dere tør!",
+        "englishtitle": "Stop It!",
+        "catnr": "NFK0027",
+        "year": "1980",
+        "genre": ["Drama", "Crime"],
+        "director": ["Lasse Glomm"],
+        "stars": ["Eirik Kvåle", "Eindride Eidsvold", "Ole Møystad", "Kristin Hauge"],
+        "description": "<p>Two 16 year old petty criminals steals a car and are followed by the police in a dramatic car chase, and when they boys are about to run off by foot, one is shot by the police. This changes the other boy's life.</p>",
+        "format": "Blu-ray",
+        "image": "./images/films/atderetor.jpg",
+        "IMDB": "https://www.imdb.com/title/tt0162867/",
+        "date": "2024-11-21"
+    },
+    {
+        "id": 28,
+        "title": "Fant",
+        "englishtitle": "Tramp",
+        "catnr": "NFK0028",
+        "year": "1937",
+        "genre": ["Drama", "Crime"],
+        "director": ["Tancred Ibsen"],
+        "stars": ["Alfred Maurstad", "Lars Tvinde", "Guri Stormoen", "Sonja Wigert"],
+        "description": "<p>An orphan, Josefa, runs away from her threatening uncle with whom she is living, and stows away on traveller Fændrik's boat. She is no better off with him, however, as he forces himself on her and makes her steal and beg for a living. Meanwhile Fændrik's sister, who has been left penniless on shore by her deceitful brother, joins forces with Josefa's fiancé, Oscar, in a search for the missing pair.</p>",
+        "format": "Blu-ray",
+        "image": "./images/films/fant.jpg",
+        "IMDB": "https://www.imdb.com/title/tt0028852/",
+        "date": "2024-11-21"
     }
 ]

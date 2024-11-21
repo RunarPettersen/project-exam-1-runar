@@ -1,6 +1,18 @@
-const apiKey = '3caf52e3-39b2-4bb2-9358-1c9a715d1322';  // Replace with your actual API key
-const loginApiUrl = 'https://v2.api.noroff.dev/auth/login';  // Login endpoint
-const registerApiUrl = 'https://v2.api.noroff.dev/auth/register';  // Registration endpoint
+const apiKey = '3caf52e3-39b2-4bb2-9358-1c9a715d1322';
+const loginApiUrl = 'https://v2.api.noroff.dev/auth/login';
+const registerApiUrl = 'https://v2.api.noroff.dev/auth/register';
+
+// Check if user is already logged in
+function redirectIfLoggedIn() {
+    const token = localStorage.getItem('authToken'); // Retrieve token from localStorage
+    if (token) {
+        // Redirect to user account page if token exists
+        window.location.href = './user.html';
+    }
+}
+
+// Run the redirect check when the script loads
+redirectIfLoggedIn();
 
 async function loginUser(email, password) {
     try {
@@ -14,12 +26,12 @@ async function loginUser(email, password) {
 
         if (response.ok) {
             const data = await response.json();
-            console.log('Login successful:', data);  // Log the full response
+            console.log('Login successful:', data); // Log the full response
 
             // Extract and store the accessToken and user's name from the response
             if (data.data && data.data.accessToken) {
                 const token = data.data.accessToken;
-                localStorage.setItem('authToken', token);  // Store the token in localStorage
+                localStorage.setItem('authToken', token); // Store the token in localStorage
 
                 // Store the user's name if available in the response
                 if (data.data.name) {
@@ -27,7 +39,7 @@ async function loginUser(email, password) {
                     console.log('User name stored successfully:', data.data.name);
                 }
 
-                window.location.href = '../admin/index.html';  // Redirect to admin blog page
+                window.location.href = '../admin/index.html'; // Redirect to admin blog page
             } else {
                 console.error('No accessToken found in the login response');
                 alert('Login failed: No token returned.');
@@ -84,15 +96,15 @@ async function registerUser(name, email, password, bio, avatarUrl, avatarAlt, ba
         name,
         email,
         password,
-        bio: bio || "",  // Optional bio
-        venueManager: venueManager || false  // Optional venueManager
+        bio: bio || "", // Optional bio
+        venueManager: venueManager || false // Optional venueManager
     };
 
     // Only include avatar if URL is provided
     if (avatarUrl) {
         userData.avatar = {
             url: avatarUrl,
-            alt: avatarAlt || ""  // Optional alt
+            alt: avatarAlt || "" // Optional alt
         };
     }
 
@@ -100,7 +112,7 @@ async function registerUser(name, email, password, bio, avatarUrl, avatarAlt, ba
     if (bannerUrl) {
         userData.banner = {
             url: bannerUrl,
-            alt: bannerAlt || ""  // Optional alt
+            alt: bannerAlt || "" // Optional alt
         };
     }
 
@@ -113,12 +125,12 @@ async function registerUser(name, email, password, bio, avatarUrl, avatarAlt, ba
             body: JSON.stringify(userData)
         });
 
-        const data = await response.json();  // Parse the response
+        const data = await response.json(); // Parse the response
 
         if (response.ok) {
             console.log('Registration successful:', data);
             alert('Registration successful! Please log in.');
-            window.location.href = 'login.html';  // Redirect to login page
+            window.location.href = 'login.html'; // Redirect to login page
         } else {
             // Log the detailed error messages from the server response
             console.error('Registration failed:', data.errors);
