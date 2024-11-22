@@ -538,17 +538,35 @@ article img {
     padding: 20px;
 }
 
+/** Footer **/
+
 footer {
     background-color: #000;
     color: #fff;
     text-align: center;
-    height: 140px; 
+    height: 250px; 
 }
 
 .footer-content {
+    display: flex;
     position: relative;
     z-index: 2;
     padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content img {
+    width: 150px;
+    padding: 20px;
+}
+
+.footer-info a {
+    color: var(--second-color);
+}
+
+.footer-info {
+    line-height: 10px;
 }
 
 @media (max-width: 768px) {
