@@ -60,7 +60,7 @@
 
 #film-details {
     max-width: 1000px;
-    height: 100vh;
+    min-height: calc(100vh - 60px);
     margin: 0 auto;
     background-color: #fff;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);

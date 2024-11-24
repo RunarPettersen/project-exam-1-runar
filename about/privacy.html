@@ -42,6 +42,12 @@
                     <li><a href="../films/">Films</a></li>
                     <li><a href="./">Privacy</a></li>
                 </ul>
+                <div class="search-container-menu">
+                    <input type="text" id="searchInputMenu" placeholder="Search...">
+                    <button id="searchButtonMenu" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
@@ -105,8 +111,11 @@
         </div>
     </footer>
 
-    <script type="module" src="../js/app.js"></script>
     <script type="module" src="../js/utils/search.js"></script>
     <script src="../js/utils/highlightMenu.js" defer></script>
+    <script type="module">
+        import { initializeHamburgerMenu } from '../js/utils/hamburgerMenu.js';
+        initializeHamburgerMenu();
+    </script>
 </body>
 </html>
