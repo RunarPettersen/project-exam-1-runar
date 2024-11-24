@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const post = await fetchPostById(postId);
 
         if (post) {
+            updateMetaTags(post.title, post.body);
+
             document.getElementById('post-details').innerHTML = `
                 <article>
                     <h2>${post.title}</h2>
@@ -34,10 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </section>
             `;
 
-            // Add the share button after loading the post
             addShareButton(post.title);
-
-            // Display related posts based on tags
             displayRelatedPosts(post.tags, postId);
         } else {
             document.getElementById('post-details').innerHTML = '<p>Post not found.</p>';
@@ -47,3 +46,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('post-details').innerHTML = '<p>Error loading post.</p>';
     }
 });
+
+function updateMetaTags(title, body) {
+    document.title = `NorWave - ${title}`;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        const cleanDescription = stripHtmlTags(body); // Correctly pass 'body' instead of 'description'
+        metaDescription.setAttribute('content', `${title} - ${truncateText(cleanDescription, 150)}`);
+    }
+}
+
+function truncateText(text, maxLength) {
+    return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+}
+
+function stripHtmlTags(input) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = input;
+    return tempDiv.textContent || tempDiv.innerText || '';
+}

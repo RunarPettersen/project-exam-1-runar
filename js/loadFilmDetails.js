@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const film = films.find(f => f.id == filmId);
 
             if (film) {
+
+                updateMetaTagsForFilms(film.title, film.description);
+
                 document.getElementById('film-details').innerHTML = `
                     <img src="../${film.image}" alt="${film.title}">
                     <h2>${film.title}</h2>
@@ -37,3 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('film-details').innerHTML = '<p>Error loading film details.</p>';
         });
 });
+
+function updateMetaTagsForFilms(title, description) {
+    document.title = `NorWave - ${title}`;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        const cleanDescription = stripHtmlTags(description);
+        metaDescription.setAttribute('content', `${title} - ${truncateText(cleanDescription, 150)}`);
+    }
+}
+
+function truncateText(text, maxLength) {
+    return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+}
+
+function stripHtmlTags(input) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = input;
+    return tempDiv.textContent || tempDiv.innerText || '';
+}
