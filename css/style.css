@@ -471,16 +471,16 @@ article img {
 
 @media (max-width: 600px) {
     .filmscroller-item {
-        flex: 0 0 50%; /* On smaller screens: 2 items per row */
+        flex: 0 0 50%;
     }
 }
 
 .filmscroller-item img {
-    width: 100%; /* Ensure the image spans the container width */
-    aspect-ratio: 11 / 16; /* Maintain a consistent aspect ratio (e.g., 16:9) */
-    border-radius: 5px; /* Keep rounded corners */
-    object-fit: cover; /* Crop to fit the container while maintaining aspect ratio */
-    display: block; /* Prevent extra spacing caused by inline elements */
+    width: 100%;
+    aspect-ratio: 11 / 16;
+    border-radius: 5px;
+    object-fit: cover;
+    display: block;
 }
 
 .filmscroller-item h3 {
