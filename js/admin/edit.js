@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const postId = new URLSearchParams(window.location.search).get('id');
 
     if (postForm && postId) {
-        showLoadingSpinner(); // Show spinner while fetching post data
+        showLoadingSpinner();
 
         try {
             const post = await fetchPostById(postId);
@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (error) {
             console.error('Error loading post data:', error);
         } finally {
-            hideLoadingSpinner(); // Hide spinner after loading post data completes
+            hideLoadingSpinner();
         }
 
         postForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            showLoadingSpinner(); // Show spinner on form submission
+            showLoadingSpinner();
 
             const postData = {
                 title: document.getElementById('title').value,
@@ -43,16 +43,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const result = await updatePost(postId, postData);
                 if (result) {
                     alert('Post updated successfully');
-                    window.location.href = './index.html'; // Redirect after update
+                    window.location.href = './index.html';
                 }
             } catch (error) {
                 console.error('Error updating post:', error);
             } finally {
-                hideLoadingSpinner(); // Hide spinner after form submission completes
+                hideLoadingSpinner();
             }
         });
     } else {
         console.warn('Post form not found or postId missing.');
-        hideLoadingSpinner(); // Hide spinner if form or postId is not found
+        hideLoadingSpinner();
     }
 });

@@ -10,18 +10,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    // Fetch posts
     const posts = await fetchBlogPosts();
     const resultsContainer = document.getElementById('results-container');
 
-    // Filter posts by query
     const filteredPosts = posts.filter(post => {
         const title = post.title.toLowerCase();
         const content = post.body.toLowerCase();
         return title.includes(query) || content.includes(query);
     });
 
-    // Display results
     if (filteredPosts.length > 0) {
         filteredPosts.forEach(post => {
             const postElement = document.createElement('div');

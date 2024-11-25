@@ -9,19 +9,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const filmGrid = document.getElementById('film-grid');
     const sortOptions = document.getElementById('sortOptions');
     const paginationControls = document.getElementById('pagination-controls');
-    const filmsPerPage = 12; // Number of films per page
+    const filmsPerPage = 12;
 
     showLoadingSpinner();
 
     fetch('../json/films.json')
         .then(response => response.json())
         .then(films => {
+            // Sort films by "Newest" by default
+            const sortedFilms = sortFilms(films, 'dateAddedNewest');
+            
+            // Update the dropdown to reflect default sorting
+            if (sortOptions) {
+                sortOptions.value = 'dateAddedNewest';
+            }
+
+            // Display the default sorted films
+            initializePagination(sortedFilms, filmGrid, filmsPerPage, displayFilms);
             hideLoadingSpinner();
 
-            // Initialize pagination
-            initializePagination(films, filmGrid, filmsPerPage, displayFilms);
-
-            // Sorting functionality
+            // Add sorting functionality
             sortOptions.addEventListener('change', () => {
                 const sortedFilms = sortFilms(films, sortOptions.value);
                 initializePagination(sortedFilms, filmGrid, filmsPerPage, displayFilms);

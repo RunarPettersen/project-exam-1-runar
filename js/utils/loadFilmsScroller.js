@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(films => {
             const filmscrollerInner = document.getElementById('filmscroller-inner');
-            const latestFilms = films.slice(-10).reverse(); // Get the 10 latest films
+            const latestFilms = films.slice(-12).reverse();
 
             latestFilms.forEach(film => {
                 const filmItem = document.createElement('div');

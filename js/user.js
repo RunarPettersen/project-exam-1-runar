@@ -1,4 +1,4 @@
-const loginPageUrl = 'login.html'; // Redirect URL for login
+const loginPageUrl = 'login.html';
 
 // Check if user is logged in and redirect if not
 const redirectToLoginIfLoggedOut = () => {
@@ -23,5 +23,5 @@ const logoutUser = () => {
 document.addEventListener('DOMContentLoaded', () => {
     redirectToLoginIfLoggedOut();  // Ensure the user is logged in
     displayUserName();             // Display the stored user name
-    document.getElementById('logout-btn').addEventListener('click', logoutUser); // Handle logout
+    document.getElementById('logout-btn').addEventListener('click', logoutUser);
 });

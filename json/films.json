@@ -12,7 +12,7 @@
         "format": "Blu-ray",
         "image": "./images/films/dedodestjern.jpg",
         "IMDB": "https://www.imdb.com/title/tt0051569/",
-        "date": "2024-11-02"
+        "date": "2024-11-01"
     },
     {
         "id": 2,
@@ -942,6 +942,6 @@
         "format": "Blu-ray",
         "image": "./images/films/kristinlavransdatter.jpg",
         "IMDB": "https://www.imdb.com/title/tt0113576/",
-        "date": "2024-11-23"
+        "date": "2024-11-24"
     }
 ]

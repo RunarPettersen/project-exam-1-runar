@@ -6,13 +6,11 @@ export function initializePagination(posts, postsContainer, postsPerPage, displa
         const endIndex = startIndex + postsPerPage;
         const paginatedPosts = posts.slice(startIndex, endIndex);
 
-        // Clear and display posts for the current page
         postsContainer.innerHTML = '';
         displayPostsCallback(paginatedPosts);
 
         updatePaginationControls(posts.length, page);
 
-        // Scroll to the top of the page
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
@@ -21,15 +19,14 @@ export function initializePagination(posts, postsContainer, postsPerPage, displa
 
     function updatePaginationControls(totalPosts, activePage) {
         const paginationControls = document.getElementById('pagination-controls');
-        paginationControls.innerHTML = ''; // Clear existing controls
+        paginationControls.innerHTML = '';
     
         const totalPages = Math.ceil(totalPosts / postsPerPage);
     
-        // Add "Previous" arrow
         if (activePage > 1) {
             const prevButton = document.createElement('button');
             prevButton.classList.add('pagination-arrow', 'prev');
-            prevButton.innerHTML = '<i class="fas fa-angle-left"></i>'; // Font Awesome icon
+            prevButton.innerHTML = '<i class="fas fa-angle-left"></i>';
             prevButton.addEventListener('click', () => {
                 currentPage--;
                 displayPaginatedPosts(currentPage);
@@ -37,7 +34,6 @@ export function initializePagination(posts, postsContainer, postsPerPage, displa
             paginationControls.appendChild(prevButton);
         }
     
-        // Add page numbers
         for (let i = 1; i <= totalPages; i++) {
             const button = document.createElement('button');
             button.classList.add('pagination-button');
@@ -56,11 +52,10 @@ export function initializePagination(posts, postsContainer, postsPerPage, displa
             paginationControls.appendChild(button);
         }
     
-        // Add "Next" arrow
         if (activePage < totalPages) {
             const nextButton = document.createElement('button');
             nextButton.classList.add('pagination-arrow', 'next');
-            nextButton.innerHTML = '<i class="fas fa-angle-right"></i>'; // Font Awesome icon
+            nextButton.innerHTML = '<i class="fas fa-angle-right"></i>';
             nextButton.addEventListener('click', () => {
                 currentPage++;
                 displayPaginatedPosts(currentPage);

@@ -15,7 +15,6 @@ export async function createPost(postData) {
             body: JSON.stringify(postData),
         });
 
-        // Check if the response is successful
         if (response.ok) {
             const data = await response.json();
             alert('Post created successfully');
@@ -53,9 +52,8 @@ export async function fetchBlogPosts() {
     }
 }
 
-// Function to update an existing post
 export async function updatePost(id, postData) {
-    const updatePostUrl = `${BASE_URL}/blog/posts/${username}/${id}`;  // Update post URL with post ID
+    const updatePostUrl = `${BASE_URL}/blog/posts/${username}/${id}`;
 
     try {
         const response = await authFetch(updatePostUrl, {
@@ -77,18 +75,17 @@ export async function updatePost(id, postData) {
     }
 }
 
-// Function to fetch a single post by ID
 export async function fetchPostById(id) {
     const fetchPostUrl = `${BASE_URL}/blog/posts/${username}/${id}`;
-    console.log(`Fetching post from URL: ${fetchPostUrl}`);  // Debugging line
+    console.log(`Fetching post from URL: ${fetchPostUrl}`);
 
     try {
         const response = await authFetch(fetchPostUrl);
 
         if (response.ok) {
             const data = await response.json();
-            console.log('Fetched post data:', data);  // Check response structure
-            return data.data;  // Ensure you're accessing data correctly based on response structure
+            console.log('Fetched post data:', data);
+            return data.data;
         } else {
             console.error(`Failed to fetch post with ID: ${id}`, response.status);
             return null;
@@ -99,10 +96,9 @@ export async function fetchPostById(id) {
     }
 }
 
-// Function to delete a post by ID
 export async function deletePost(id) {
     const deletePostUrl = `${BASE_URL}/blog/posts/${username}/${id}`;
-    console.log(`Deleting post from URL: ${deletePostUrl}`);  // Debugging
+    console.log(`Deleting post from URL: ${deletePostUrl}`);
 
     try {
         const response = await authFetch(deletePostUrl, {

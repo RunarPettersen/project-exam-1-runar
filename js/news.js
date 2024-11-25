@@ -8,7 +8,7 @@ import { initializePagination } from './utils/pagination.js';
 initializeHamburgerMenu();
 showLoadingSpinner();
 
-const postsPerPage = 12; // Number of posts per page
+const postsPerPage = 12;
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -19,10 +19,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const posts = await fetchBlogPosts();
             console.log('Full API response:', posts);
 
-            // Initialize pagination
             initializePagination(posts, postsContainer, postsPerPage, displayPosts);
 
-            // Initialize sorting functionality
             initializeSorting(posts);
         }
     } catch (error) {
@@ -35,7 +33,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 function displayPosts(posts) {
     const postsContainer = document.getElementById('posts-front');
     
-    // Clear existing content before adding new posts
     postsContainer.innerHTML = '';
 
     posts.forEach(post => {
@@ -52,14 +49,12 @@ function displayPosts(posts) {
     });
 }
 
-// Sorting functionality
 function initializeSorting(posts) {
     const sortOptions = document.getElementById('sortOptions');
     if (sortOptions) {
         sortOptions.addEventListener('change', () => {
             const sortedPosts = sortNews(posts, sortOptions.value);
             
-            // Reinitialize pagination with sorted posts
             initializePagination(sortedPosts, document.getElementById('posts-front'), postsPerPage, displayPosts);
         });
     }

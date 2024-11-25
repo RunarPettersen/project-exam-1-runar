@@ -2,16 +2,13 @@ import { initializeHamburgerMenu } from '../utils/hamburgerMenu.js';
 import { fetchBlogPosts, deletePost } from '../../api/posts.js';
 import { showLoadingSpinner, hideLoadingSpinner } from '../utils/loadingSpinner.js';
 
-// Check if the user is logged in
 function checkAuth() {
-    const token = localStorage.getItem('authToken'); // Retrieve the token from localStorage
+    const token = localStorage.getItem('authToken');
     if (!token) {
-        // Redirect to login page if no token is found
         window.location.href = '../account/login.html';
     }
 }
 
-// Initialize the page
 function initializeAdminPage() {
     const postsContainer = document.getElementById('posts-container');
 
@@ -44,7 +41,6 @@ function initializeAdminPage() {
     });
 }
 
-// Fetch and display posts
 async function loadPosts() {
     const postsContainer = document.getElementById('posts-container');
 
@@ -73,9 +69,8 @@ async function loadPosts() {
     }
 }
 
-// Main execution
 document.addEventListener('DOMContentLoaded', () => {
-    checkAuth(); // Check if the user is authenticated
+    checkAuth();
     initializeHamburgerMenu();
-    initializeAdminPage(); // Initialize the admin page functionality
+    initializeAdminPage();
 });

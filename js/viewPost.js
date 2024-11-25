@@ -51,7 +51,7 @@ function updateMetaTags(title, body) {
     document.title = `NorWave - ${title}`;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-        const cleanDescription = stripHtmlTags(body); // Correctly pass 'body' instead of 'description'
+        const cleanDescription = stripHtmlTags(body);
         metaDescription.setAttribute('content', `${title} - ${truncateText(cleanDescription, 150)}`);
     }
 }

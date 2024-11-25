@@ -5,7 +5,6 @@ export function initializeHamburgerMenu() {
         const closeMenuButton = document.getElementById('closeMenu');
 
         if (menuToggle && mobileMenu && closeMenuButton) {
-            // Toggle mobile menu on hamburger click
             menuToggle.addEventListener('click', () => {
                 const checkbox = menuToggle.querySelector('input[type="checkbox"]');
                 if (checkbox.checked) {
@@ -15,19 +14,17 @@ export function initializeHamburgerMenu() {
                 }
             });
 
-            // Close mobile menu on close button click
             closeMenuButton.addEventListener('click', () => {
                 const checkbox = menuToggle.querySelector('input[type="checkbox"]');
-                checkbox.checked = false; // Uncheck the checkbox
+                checkbox.checked = false;
                 mobileMenu.classList.remove('active');
             });
 
-            // Close mobile menu on link click (for accessibility)
             const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav-links a');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     const checkbox = menuToggle.querySelector('input[type="checkbox"]');
-                    checkbox.checked = false; // Uncheck the checkbox
+                    checkbox.checked = false;
                     mobileMenu.classList.remove('active');
                 });
             });

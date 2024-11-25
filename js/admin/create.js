@@ -24,16 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await createPost(postData);
                 if (result) {
                     alert('Post created successfully');
-                    window.location.href = './index.html'; // Redirect after creation
+                    window.location.href = './index.html';
                 }
             } catch (error) {
                 console.error('Error creating post:', error);
             } finally {
-                hideLoadingSpinner(); // Ensure spinner hides after submission
+                hideLoadingSpinner();
             }
         });
     } else {
         console.warn('Post form not found.');
-        hideLoadingSpinner(); // Hide spinner if form not found
+        hideLoadingSpinner();
     }
 });

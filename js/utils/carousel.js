@@ -18,7 +18,6 @@ export async function initializeCarousel() {
             carouselContainer.appendChild(postItem);
         });
 
-        // Variables needed for carousel logic
         let currentIndex = 0;
         let slideTimer;
         const items = document.querySelectorAll('.carousel-item');
@@ -30,11 +29,11 @@ export async function initializeCarousel() {
         }
 
         function startAutoSlide() {
-            clearInterval(slideTimer); // Clear any existing timer
+            clearInterval(slideTimer);
             slideTimer = setInterval(() => {
                 currentIndex = (currentIndex + 1) % totalItems;
                 updateCarousel(currentIndex);
-            }, 5000); // Change every 5 seconds
+            }, 5000);
         }
 
         function restartAutoSlide() {

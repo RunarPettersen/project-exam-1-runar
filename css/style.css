@@ -136,7 +136,7 @@ body::before {
 .mobile-menu {
     position: fixed;
     top: 98px;
-    right: -100%; /* Start off-screen */
+    right: -100%;
     width: 100%;
     max-width: 500px;
     height: 100vh;
@@ -187,14 +187,13 @@ nav ul.menu a.active,
     font-size: 18px;
 }
 
-/* Show the toggle button on mobile and hide desktop search and nav */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
     }
 
     .nav-links, .search-form {
-        display: none; /* Hide desktop menu and search */
+        display: none;
     }
 }
 
@@ -406,11 +405,11 @@ article img {
 }
 
 .post img {
-    width: 100%; /* Make the image fit the container */
-    height: 200px; /* Set a fixed height for uniformity */
-    object-fit: cover; /* Ensure the image is cropped to fit */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
     border-radius: 5px;
-    margin-top: auto; /* Pushes the image to the bottom */
+    margin-top: auto;
     padding-top: 20px;
 }
 
@@ -581,6 +580,7 @@ menu {
 
 menu a {
     color: var(--main-color);
+    text-decoration: none;
 }
 
 /** Footer **/
@@ -605,7 +605,7 @@ footer {
     width: 150px;
     padding: 20px;
     animation-name: spin;
-    animation-duration: 5000ms;
+    animation-duration: 8000ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
@@ -653,13 +653,6 @@ footer {
 
     .search-container {
         display: none;
-    }
-}
-
-@media (max-width: 600px) {
-    form {
-        padding: 15px;
-        width: 100%;
     }
 }
 

@@ -8,7 +8,7 @@ import { initializePagination } from './utils/pagination.js';
 initializeHamburgerMenu();
 showLoadingSpinner();
 
-const postsPerPage = 6;
+const postsPerPage = 12;
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -38,8 +38,8 @@ function displayPosts(posts) {
         const postElement = document.createElement('div');
         postElement.classList.add('post');
         postElement.innerHTML = `
-            <a href="./view.html?id=${post.id}"><h2>${post.title}</h2></a>
-            <p>${truncateText(post.body, 250)}</p>
+            <a href="./view.html?id=${post.id}"><h2>${post.title}</h2>
+            <p>${truncateText(post.body, 250)}</p></a>
             <a href="./view.html?id=${post.id}">… Read more
                 ${post.media.url ? `<img src="${post.media.url}" alt="${post.media.alt || 'No image'}" />` : ''}
             </a>

@@ -5,7 +5,7 @@ export async function displayRelatedPosts(tags, currentPostId) {
         const allPosts = await fetchBlogPosts();
         const relatedPosts = allPosts
             .filter(post => post.id !== currentPostId && post.tags.some(tag => tags.includes(tag)))
-            .slice(0, 3); // Limit to 3 related posts
+            .slice(0, 3);
 
         const relatedPostsContainer = document.querySelector('.related-posts-container');
         

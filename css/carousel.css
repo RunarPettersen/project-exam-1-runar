@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    max-width: 960px; /* Ensure the carousel width is limited */
+    max-width: 960px;
     margin: auto;
     flex-direction: column;
     background-color: #fff;
@@ -12,29 +12,29 @@
 
 .carousel h1 {
     align-self: flex-start;
-    color: var(--text-color); /* Retain text color */
+    color: var(--text-color);
 }
 
 .carousel-inner {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 300%; /* Allow space for three items */
+    width: 300%;
 }
 
 .carousel-item {
-    flex: 0 0 100%; /* Each item takes full width */
+    flex: 0 0 100%;
     text-align: center;
 }
 
 .carousel-item a {
-    color: var(--link-color); /* Retain link color */
+    color: var(--link-color);
 }
 
 .carousel-item img {
-    width: 100%; /* Make images responsive within the item */
+    width: 100%;
     max-width: 900px;
-    height: 400px; /* Consistent height for all images */
-    object-fit: cover; /* Crop images to fit within the height */
+    height: 400px;
+    object-fit: cover;
     border-radius: 5px;
 }
 
