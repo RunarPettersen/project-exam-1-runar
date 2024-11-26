@@ -1,27 +1,24 @@
 const loginPageUrl = 'login.html';
 
-// Check if user is logged in and redirect if not
 const redirectToLoginIfLoggedOut = () => {
     if (!localStorage.getItem('authToken')) {
         window.location.href = loginPageUrl;
     }
 };
 
-// Display user’s name from `localStorage`
 const displayUserName = () => {
     const userName = localStorage.getItem('userName') || 'User';
     document.getElementById('user-name').textContent = userName;
 };
 
-// Logout function
 const logoutUser = () => {
-    localStorage.removeItem('authToken');  // Clear the auth token
-    localStorage.removeItem('userName');   // Clear the stored user name
-    window.location.href = loginPageUrl;   // Redirect to login
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userName');
+    window.location.href = loginPageUrl;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    redirectToLoginIfLoggedOut();  // Ensure the user is logged in
-    displayUserName();             // Display the stored user name
+    redirectToLoginIfLoggedOut();
+    displayUserName();
     document.getElementById('logout-btn').addEventListener('click', logoutUser);
 });

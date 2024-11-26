@@ -16,19 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('../json/films.json')
         .then(response => response.json())
         .then(films => {
-            // Sort films by "Newest" by default
             const sortedFilms = sortFilms(films, 'dateAddedNewest');
             
-            // Update the dropdown to reflect default sorting
             if (sortOptions) {
                 sortOptions.value = 'dateAddedNewest';
             }
 
-            // Display the default sorted films
             initializePagination(sortedFilms, filmGrid, filmsPerPage, displayFilms);
             hideLoadingSpinner();
 
-            // Add sorting functionality
             sortOptions.addEventListener('change', () => {
                 const sortedFilms = sortFilms(films, sortOptions.value);
                 initializePagination(sortedFilms, filmGrid, filmsPerPage, displayFilms);
