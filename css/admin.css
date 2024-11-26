@@ -11,7 +11,7 @@ form {
     background-color: #fff;
     max-width: 1000px;
     margin: 0 auto;
-    height: 60vh;
+    height: 100vh;
 }
 
 form label {
@@ -37,7 +37,7 @@ form textarea:focus {
 }
 
 form textarea {
-    height: 100px;
+    height: 400px;
     resize: vertical;
 }
 
