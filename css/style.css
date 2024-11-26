@@ -506,6 +506,7 @@ article img {
     cursor: pointer;
     font-size: 2rem;
     z-index: 2;
+    color: #fff;
 }
 
 #filmscroller-prev {

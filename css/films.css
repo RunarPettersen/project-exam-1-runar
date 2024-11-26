@@ -146,7 +146,7 @@
 
 .pagination-button.active,
 .pagination-arrow:hover {
-    background-color: var(--second-color);
+    background-color: #001b8e;
     font-weight: bold;
 }
 
