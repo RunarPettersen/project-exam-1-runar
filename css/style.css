@@ -118,7 +118,7 @@ body::before {
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
     white-space: nowrap;
-	color: #fff;
+	color: #000;
 }
 
 /* Mobile Menu Toggle Button */
@@ -333,8 +333,8 @@ article img {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
-    z-index: 1000; /* Ensure it's on top of other content */
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
 }
 
 .loader {
