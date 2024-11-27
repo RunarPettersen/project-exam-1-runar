@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (postsContainer && paginationControls) {
             const posts = await fetchBlogPosts();
-            console.log('Full API response:', posts);
 
             initializePagination(posts, postsContainer, postsPerPage, displayPosts);
 

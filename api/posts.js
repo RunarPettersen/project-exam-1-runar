@@ -40,7 +40,6 @@ export async function fetchBlogPosts() {
 
         if (response.ok) {
             const data = await response.json();
-            console.log('Fetched blog posts:', data);
             return data.data;
         } else {
             console.error('Failed to fetch blog posts:', response.status);
@@ -77,14 +76,12 @@ export async function updatePost(id, postData) {
 
 export async function fetchPostById(id) {
     const fetchPostUrl = `${BASE_URL}/blog/posts/${username}/${id}`;
-    console.log(`Fetching post from URL: ${fetchPostUrl}`);
 
     try {
         const response = await authFetch(fetchPostUrl);
 
         if (response.ok) {
             const data = await response.json();
-            console.log('Fetched post data:', data);
             return data.data;
         } else {
             console.error(`Failed to fetch post with ID: ${id}`, response.status);

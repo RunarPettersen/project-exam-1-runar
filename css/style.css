@@ -525,6 +525,7 @@ article img {
     font-size: 1.5em;
     margin-bottom: 15px;
     padding-left: 20px;
+    color: #fff;
 }
 
 .related-posts-container {
@@ -570,7 +571,7 @@ article img {
     padding: 20px;
 }
 
-menu {
+.secondmenu {
     display: flex;
     background-color: #fff;
     gap: 20px;
@@ -582,7 +583,7 @@ menu {
     z-index: 95;
 }
 
-menu a {
+.secondmenu a {
     color: var(--main-color);
     text-decoration: none;
 }
@@ -671,6 +672,10 @@ footer {
 
     #posts-front {
         grid-template-columns: unset;
+    }
+
+    .secondmenu a {
+        font-size: 0.8em;
     }
 }
 

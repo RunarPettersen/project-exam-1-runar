@@ -5,7 +5,6 @@ const searchButtonMenu = document.getElementById('searchButtonMenu');
 
 function redirectToSearchResults(query) {
     if (query) {
-        // Use window.location.pathname to dynamically get the full base path
         const basePath = `${window.location.origin}${window.location.pathname.split('/').slice(0, -1).join('/')}`;
         const searchResultsPath = `${basePath}/search-results.html`;
         window.location.href = `${searchResultsPath}?query=${encodeURIComponent(query)}`;
